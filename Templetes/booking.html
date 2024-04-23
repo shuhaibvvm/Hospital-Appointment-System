@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%}
+Booking
+{% endblock %}
+
+{% block content%}
+<h1 class="text-center">Make An Appointment</h1>
+<hr>
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.name.id_for_label }}">Name</label>
+        {{ form.name }}  <!-- Render the form field -->
+        {% if form.name.errors %}
+            <div class="error">{{ form.name.errors }}</div>
+        {% endif %}
+    </div>
+    <!-- Repeat for other form fields -->
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
